@@ -18,17 +18,25 @@ import Map from './components/Map.vue';
 
 <style scoped>
   header {
-    padding-top: 2rem;
     background: url("@/assets/images/pattern-bg.png");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    
     color: #fff;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+
+    padding-top: 2rem;
     width: 100%;
-    height: 100%;
+    height: 25%;
     text-align: center;
   }
 
   h1 {
-    font-size: 2.5em;
+    font-size: 2.15em;
   }
 </style>
