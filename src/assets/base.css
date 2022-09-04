@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
-
+  --var-c-gray-700: hsl(0, 0%, 17%);
+  --var-c-gray-500: hsl(0, 0%, 59%);
 }
 
-/* semantic color variables for this project */
+/* Typography for this project */
 :root {
+  --var-fs-text: 18px;
+  --var-fw-light: 400;
+  --var-fw-medium: 500;
+  --var-fw-bold: 700;
 }
 
 *,
@@ -13,5 +20,5 @@
   box-sizing: border-box;
   margin: 0;
   position: relative;
-  font-weight: normal;
+  font-family: 'Rubik', sans-serif;
 }
