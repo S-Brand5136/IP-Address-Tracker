@@ -2,17 +2,19 @@
 import { reactive, defineProps } from 'vue'
 import IconArrow from './icons/IconArrow.vue';
 
-const props = defineProps(['locationData'])
+const props = defineProps(['locationData']);
+const emit = defineEmits(['submit']);
 const state = reactive({ text: "" });
 
 const submitHandler = () => {
+  emit('submit', state.text);
   state.text = ""
 }
 </script>
 <template lang="">
   <div class="input-group">
-    <input type="text" placeholder="Search for any IP address or domain" :value="state.text" @input="event => state.text = event.target.value">
-    <button @click="submitHandler">
+    <input data-testid="user-input" type="text" placeholder="Search for any IP address or domain" :value="state.text" @input="event => state.text = event.target.value">
+    <button data-testid="submit-btn" @click="submitHandler">
       <IconArrow /> 
     </button>
   </div>
