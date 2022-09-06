@@ -1,20 +1,29 @@
 <script setup>
-import { reactive, defineProps } from 'vue'
+import { reactive } from 'vue'
 import IconArrow from './icons/IconArrow.vue';
+import { store } from '../store';
+import { getLocationData } from '../helpers/getLocationData';
 
-const props = defineProps(['locationData']);
+const props = defineProps({'submitHandler': Function});
 const emit = defineEmits(['submit']);
-const state = reactive({ text: "" });
 
-const submitHandler = () => {
-  emit('submit', state.text);
-  state.text = ""
+const clickHandler = async (address) => {
+  emit('submit', store.text)
+  if(store.text !== "") {
+    const data = await getLocationData(address);
+  
+    if(data) {
+      store.locationData = {...data}
+    }
+  }
+
+  store.text = ""
 }
 </script>
 <template lang="">
   <div class="input-group">
-    <input data-testid="user-input" type="text" placeholder="Search for any IP address or domain" :value="state.text" @input="event => state.text = event.target.value">
-    <button data-testid="submit-btn" @click="submitHandler">
+    <input data-testid="user-input" type="text" placeholder="Search for any IP address or domain" :value="store.text" @input="event => store.text = event.target.value">
+    <button data-testid="submit-btn" @click="clickHandler">
       <IconArrow /> 
     </button>
   </div>
