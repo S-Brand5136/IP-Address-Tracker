@@ -1,18 +1,19 @@
 import { describe, it, beforeAll, afterEach, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import Input from "../Input.vue";
+import { store } from "../../store";
 
 let wrapper;
 
 beforeAll(() => {
-  wrapper = mount(Input, { props: { locationData: {} } });
+  wrapper = mount(Input);
 });
 
 afterEach(() => {
   const inputSelector = "[data-testid=user-input]";
   wrapper.find(inputSelector).setValue("");
 
-  wrapper.vm.state.text = "";
+  store.user_input = "";
 });
 
 describe("Input", () => {
