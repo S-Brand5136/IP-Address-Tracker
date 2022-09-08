@@ -39,4 +39,9 @@ import Map from './components/Map.vue';
   h1 {
     font-size: 2.15em;
   }
+
+  main {
+    height: 100%;
+    width: 100%;
+  }
 </style>
